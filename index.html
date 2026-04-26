@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FENTO RUN BPN 2026</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+body{background:#0f2027;color:white;}
+
+/* HERO */
+.hero{
+    height:100vh;
+    background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.85)),
+    url('banner.jpg') center/cover;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:20px;
+}
+
+.hero-content{
+    backdrop-filter: blur(12px);
+    background:rgba(255,255,255,0.08);
+    padding:35px;
+    border-radius:20px;
+    max-width:500px;
+    width:100%;
+}
+
+/* TEXT */
+.hero h1{font-size:36px;font-weight:800;margin-bottom:10px;}
+.hero p{font-size:16px;opacity:0.9;}
+
+/* COUNTDOWN */
+.countdown{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin:25px 0;
+}
+
+.time-box{
+    background:rgba(255,255,255,0.12);
+    padding:12px;
+    border-radius:10px;
+    min-width:65px;
+}
+
+.time-box h2{font-size:22px;}
+.time-box span{font-size:11px;}
+
+/* BUTTON */
+.btn{
+    padding:14px 30px;
+    background:#00c9a7;
+    border-radius:30px;
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+    border:none;
+    box-shadow:0 0 20px rgba(0,255,200,0.5);
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:#00a98b;
+    transform:scale(1.08);
+}
+
+/* KUOTA */
+.quota-wrap{margin-top:20px;}
+
+.bar{
+    width:100%;
+    height:10px;
+    background:#333;
+    border-radius:10px;
+    overflow:hidden;
+}
+
+.bar-fill{
+    height:100%;
+    width:85%;
+    background:linear-gradient(90deg,#00ffcc,#00c9a7);
+    animation:loading 2s infinite alternate;
+}
+
+.quota-text{
+    font-size:13px;
+    margin-top:5px;
+    color:#ffcc00;
+    animation:blink 1s infinite;
+}
+
+/* SECTION */
+.section{
+    padding:60px 20px;
+    text-align:center;
+}
+
+.cards{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+    justify-content:center;
+    margin-top:30px;
+}
+
+.card{
+    background:rgba(255,255,255,0.08);
+    padding:20px;
+    border-radius:15px;
+    width:200px;
+}
+
+/* ANIMATION */
+@keyframes loading{
+    from{width:75%}
+    to{width:95%}
+}
+
+@keyframes blink{
+    50%{opacity:0.3}
+}
+
+/* MOBILE */
+@media(max-width:600px){
+    .hero h1{font-size:26px}
+    .time-box h2{font-size:18px}
+}
+</style>
+
+</head>
+
+<body>
+
+<section class="hero">
+<div class="hero-content">
+
+<h1>FENTO RUN BPN 2026</h1>
+<p>26 Juli 2026 • Pantai Kilang Mandiri</p>
+
+<div class="countdown">
+<div class="time-box"><h2 id="days">00</h2><span>Hari</span></div>
+<div class="time-box"><h2 id="hours">00</h2><span>Jam</span></div>
+<div class="time-box"><h2 id="minutes">00</h2><span>Menit</span></div>
+<div class="time-box"><h2 id="seconds">00</h2><span>Detik</span></div>
+</div>
+
+<button class="btn" onclick="redirectForm()">DAFTAR SEKARANG</button>
+
+<div class="quota-wrap">
+    <div class="bar">
+        <div class="bar-fill"></div>
+    </div>
+    <div class="quota-text">⚠️ Kuota Hampir Habis!</div>
+</div>
+
+</div>
+</section>
+
+<section class="section">
+<h2>Kategori Lomba</h2>
+
+<div class="cards">
+<div class="card">5K Pelajar<br>Rp175.000</div>
+<div class="card">5K Umum<br>Rp200.000</div>
+<div class="card">10K<br>Rp275.000</div>
+<div class="card">21K<br>Rp350.000</div>
+</div>
+</section>
+
+<script>
+// COUNTDOWN FIX (AMAN)
+const targetDate = new Date("July 26, 2026 00:00:00").getTime();
+
+setInterval(() => {
+    const now = new Date().getTime();
+    let gap = targetDate - now;
+    if (gap < 0) gap = 0;
+
+    const d = Math.floor(gap / (1000*60*60*24));
+    const h = Math.floor((gap % (1000*60*60*24)) / (1000*60*60));
+    const m = Math.floor((gap % (1000*60*60)) / (1000*60));
+    const s = Math.floor((gap % (1000*60)) / 1000);
+
+    document.getElementById("days").innerText = d;
+    document.getElementById("hours").innerText = h;
+    document.getElementById("minutes").innerText = m;
+    document.getElementById("seconds").innerText = s;
+},1000);
+
+// REDIRECT FIX (PASTI JALAN)
+function redirectForm(){
+    const btn = document.querySelector(".btn");
+    btn.innerText = "Mengalihkan...";
+    btn.disabled = true;
+
+    setTimeout(()=>{
+        window.location.href = "https://zonamerahmarsyal-creator.github.io/FROM-PENDAFTARAN-FENTARUN-/";
+    },800);
+}
+</script>
+
+</body>
+</html>
